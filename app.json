@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/admin/admin",
+    "pages/stats/stats"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "家庭点餐系统",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png",
+        "text": "点餐"
+      },
+      {
+        "pagePath": "pages/admin/admin",
+        "iconPath": "images/admin.png",
+        "selectedIconPath": "images/admin-active.png",
+        "text": "审核"
+      },
+      {
+        "pagePath": "pages/stats/stats",
+        "iconPath": "images/stats.png",
+        "selectedIconPath": "images/stats-active.png",
+        "text": "统计"
+      }
+    ]
+  }
+}
