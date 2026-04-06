@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="header">
+    <text class="title">订单审核</text>
+    <picker mode="date" value="{{currentDate}}" bindchange="onDateChange">
+      <text class="date-picker">{{currentDate}}</text>
+    </picker>
+  </view>
+
+  <scroll-view scroll-y class="orders-scroll">
+    <view class="order-item" wx:for="{{filteredOrders}}" wx:key="id" bindtap="viewOrderDetail" data-id="{{item.id}}">
+      <view class="order-header">
+        <text class="order-id">订单#{{item.id}}</text>
+        <text class="order-status status-{{item.status}}">{{getStatusText(item.status)}}</text>
+      </view>
+      <view class="order-info">
+        <text>{{item.customer}} - {{item.date}}</text>
+        <text class="order-total">￥{{item.totalPrice}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="batch-actions" wx:if="{{selectedOrders.length > 0}}">
+    <button class="batch-btn approve-btn" bindtap="batchApprove">批量通过 ({{selectedOrders.length}})</button>
+    <button class="batch-btn reject-btn" bindtap="batchReject">批量驳回</button>
+  </view>
+</view>
