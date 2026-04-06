@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="header">
+    <text class="title">今日点餐</text>
+    <text class="date">{{currentDate}}</text>
+  </view>
+
+  <scroll-view scroll-y class="menu-scroll">
+    <view class="menu-category" wx:for="{{menuCategories}}" wx:key="id">
+      <text class="category-title">{{item.name}}</text>
+      <view class="menu-items">
+        <view class="menu-item" wx:for="{{item.items}}" wx:key="id" bindtap="selectItem" data-item="{{item}}">
+          <image class="item-img" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="item-info">
+            <text class="item-name">{{item.name}}</text>
+            <text class="item-price">￥{{item.price}}/份</text>
+          </view>
+          <button class="add-btn" bindtap="addToCart" data-item="{{item}}">+</button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="cart-section">
+    <view class="cart-header" bindtap="toggleCart">
+      <text>购物车 ({{cartTotalCount}})</text>
+      <text class="total-price">￥{{cartTotalPrice}}</text>
+    </view>
+    <view class="cart-items" wx:if="{{showCart}}">
+      <view class="cart-item" wx:for="{{cartItems}}" wx:key="id">
+        <text>{{item.name}} x{{item.count}}</text>
+        <view class="cart-controls">
+          <button size="mini" bindtap="decreaseItem" data-id="{{item.id}}">-</button>
+          <button size="mini" bindtap="increaseItem" data-id="{{item.id}}">+</button>
+          <button size="mini" class="remove-btn" bindtap="removeItem" data-id="{{item.id}}">删除</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <button class="submit-btn" disabled="{{cartTotalCount === 0}}" bindtap="submitOrder">
+    提交订单 (￥{{cartTotalPrice}})
+  </button>
+</view>
